@@ -49,6 +49,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -Al --color always $realpath'
 
 alias ls="lsd -Al --color always"
 alias vim="nvim"
+alias activate="source venv/bin/activate"
 
 eval "$(fzf --zsh)"
 

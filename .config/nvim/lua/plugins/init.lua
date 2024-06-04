@@ -30,9 +30,6 @@ return {
     "mfussenegger/nvim-dap",
   },
   {
-    "vimsence/vimsence"
-  },
-  {
     "mfussenegger/nvim-dap-python",
     ft = {"python"},
     dependencies = {

@@ -52,13 +52,4 @@ alias vim="nvim"
 alias activate="source venv/bin/activate"
 alias load-env="set -a; source .env; set +a"
 
-eval "$(fzf --zsh)"
-
-if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-  eval `ssh-agent`
-  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
-fi
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add
-
 neofetch

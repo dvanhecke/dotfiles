@@ -36,6 +36,10 @@ return {
     "iamcco/markdown-preview.nvim"
   },
   {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
+  {
     "mfussenegger/nvim-dap-python",
     ft = {"python"},
     dependencies = {

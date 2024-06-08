@@ -170,6 +170,11 @@ _G.packer_plugins = {
     path = "/home/orion/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
+  ["vim-jukit"] = {
+    loaded = true,
+    path = "/home/orion/.local/share/nvim/site/pack/packer/start/vim-jukit",
+    url = "https://github.com/luk400/vim-jukit"
+  },
   ["vim-tmux-navigator"] = {
     loaded = true,
     path = "/home/orion/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",

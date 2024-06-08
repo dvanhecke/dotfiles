@@ -1,0 +1,9 @@
+[user]
+	email = duartevanhecke@gmail.com
+	name = dvanhecke
+[push]
+	autoSetupRemote = true
+
+[includeIf "gitdir:~/school/"]
+    path = .gitconfig.school
+

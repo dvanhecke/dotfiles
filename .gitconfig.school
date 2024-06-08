@@ -1,0 +1,5 @@
+[user]
+	email = duarte.vanhecke@student.odisee.be
+	name = Duarte Van Hecke
+[push]
+	autoSetupRemote = true

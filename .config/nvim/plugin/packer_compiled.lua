@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/home/orion/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/theprimeagen/harpoon"
   },
+  ["jupyter-kernel.nvim"] = {
+    loaded = true,
+    path = "/home/orion/.local/share/nvim/site/pack/packer/start/jupyter-kernel.nvim",
+    url = "https://github.com/lkhphuc/jupyter-kernel.nvim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/home/orion/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",

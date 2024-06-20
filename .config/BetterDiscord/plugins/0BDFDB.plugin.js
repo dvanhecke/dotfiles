@@ -2,7 +2,7 @@
  * @name BDFDB
  * @author DevilBro
  * @authorId 278543574059057154
- * @version 3.6.6
+ * @version 3.6.8
  * @description Required Library for DevilBro's Plugins
  * @invite Jx3TjNS
  * @donate https://www.paypal.me/MircoWittrien
@@ -1402,7 +1402,7 @@ module.exports = (_ => {
 					let secondReturn = BDFDB.ModuleUtils.find(m => {
 						if (typeof m != "function") return false;
 						let stringified = m.toString().replace(/\s/g, "");
-						if (stringified.indexOf(".exports={") == -1 || !(/function\([A-z],[A-z],[A-z]\)\{"usestrict";[A-z]\.exports=\{/.test(stringified) || /function\([A-z]\)\{"usestrict";[A-z]\.exports=\{/.test(stringified))) return false;
+						if (stringified.indexOf(".exports={") == -1 || !(/function\([A-z],[A-z],[A-z]\)\{[A-z]\.[A-z]\([A-z]\.exports=\{/.test(stringified) || /function\([A-z],[A-z],[A-z]\)\{[A-z]\.exports=\{/.test(stringified) || /function\([A-z]\)\{[A-z]\.exports=\{/.test(stringified))) return false;
 						let amount = stringified.split(":\"").length - 1;
 						return (!config.length || (config.smaller ? amount < config.length : amount == config.length)) && [props].flat(10).every(string => stringified.indexOf(`${string}:`) > -1) && m;
 					}, {onlySearchUnloaded: true, all: config.all, defaultExport: config.defaultExport});
@@ -1410,7 +1410,14 @@ module.exports = (_ => {
 					return BDFDB.ArrayUtils.removeCopies([firstReturn].concat(secondReturn).flat(10));
 				};
 				
-				const DiscordConstantsObject = BDFDB.ModuleUtils.findByProperties("AnalyticsSections", "ChannelTypes", "MessageTypes");
+				const DiscordConstantsObject = BDFDB.ModuleUtils.find(m => {try {
+				    if (!m || !Object.keys(m)) return;
+				    if ([["CUSTOM_STATUS", "STREAMING", "WATCHING"], ["GUILD_TEXT", "GUILD_FORUM", "GUILD_STORE"], ["THREAD_CREATED", "CHAT_INPUT_COMMAND"]].every(array => Object.keys(m).some(k => {
+					if (!m[k]) return false;
+					let keys = Object.keys(m[k]);
+					if (keys && array.every(n => keys.indexOf(n) > -1)) return true;
+				    }))) return m;
+				} catch (err) {}});
 				if (InternalData.CustomDiscordConstants) DiscordConstants = Object.assign(DiscordConstants, InternalData.CustomDiscordConstants);
 				if (DiscordConstantsObject) DiscordConstants = Object.assign(DiscordConstants, DiscordConstantsObject);
 				Internal.DiscordConstants = new Proxy(DiscordConstants, {
@@ -1421,11 +1428,34 @@ module.exports = (_ => {
 							return {};
 						}
 						if (InternalData.DiscordConstants[item].strings) DiscordConstants[item] = BDFDB.ModuleUtils.findByString(InternalData.DiscordConstants[item].strings);
-						else DiscordConstants[item] = BDFDB.ModuleUtils.findByProperties(InternalData.DiscordConstants[item]);
+						else {
+							if (DiscordConstantsObject) DiscordConstants[item] = DiscordConstantsObject[Object.keys(DiscordConstantsObject).find(n => {
+								let keys = Object.keys(DiscordConstantsObject[n]);
+								if (keys && InternalData.DiscordConstants[item].every(k => keys.indexOf(n) > -1)) return true;
+							})];
+							if (!DiscordConstants[item]) DiscordConstants[item] = BDFDB.ModuleUtils.findByProperties(InternalData.DiscordConstants[item]);
+						}
 						if (InternalData.DiscordConstants[item].value) DiscordConstants[item] = DiscordConstants[item][InternalData.DiscordConstants[item].value] || DiscordConstants[item];
 						return DiscordConstants[item] ? DiscordConstants[item] : {};
 					}
 				});
+				const DiscordColors = BDFDB.ModuleUtils.findByProperties("spotify", "guild-boosting-blue");
+				Internal.DiscordConstants.Colors = new Proxy(DiscordConstants, {
+					get: function (_, item) {
+						const color = DiscordColors[item] || DiscordColors[item.toLowerCase()] || DiscordColors[item.toUpperCase()];
+						if (color) return color && color.hex || color || "";
+						else {
+							const item2 = item.replace(/-/g, "_");
+							const color2 = DiscordColors[item2] || DiscordColors[item2.toLowerCase()] || DiscordColors[item2.toUpperCase()];
+							if (color2) return color2 && color2.hex || color2 || "";
+							else {
+								const item3 = item.replace(/_/g, "-");
+								const color3 = DiscordColors[item3] || DiscordColors[item3.toLowerCase()] || DiscordColors[item3.toUpperCase()];
+								return color3 && color3.hex || color3 || "";
+							}
+						}
+					}
+				})
 				BDFDB.DiscordConstants = Internal.DiscordConstants;
 				
 				Internal.DiscordObjects = new Proxy(DiscordObjects, {
@@ -7108,7 +7138,7 @@ module.exports = (_ => {
 				CustomComponents.SettingsLabel = reactInitialized && class BDFDB_SettingsLabel extends Internal.LibraryModules.React.Component {
 					render() {
 						return BDFDB.ReactUtils.createElement(Internal.LibraryComponents.TextScroller, {
-							className: BDFDB.DOMUtils.formatClassName(this.props.className, BDFDB.disCN.settingsrowtitle, this.props.mini ? BDFDB.disCN.settingsrowtitlemini : BDFDB.disCN.settingsrowtitledefault, BDFDB.disCN.cursordefault),
+							className: BDFDB.DOMUtils.formatClassName(this.props.className, BDFDB.disCN.settingsrowtitle, this.props.mini && BDFDB.disCN.settingsrowtitlemini, BDFDB.disCN.cursordefault),
 							speed: 2,
 							children: this.props.label
 						});
@@ -7166,7 +7196,7 @@ module.exports = (_ => {
 					}
 					renderItem(props) {
 						return BDFDB.ReactUtils.createElement(Internal.LibraryComponents.Card, BDFDB.ObjectUtils.exclude(Object.assign({}, this.props, {
-							className: BDFDB.DOMUtils.formatClassName([this.props.cardClassName, props.className].filter(n => n).join(" ").indexOf(BDFDB.disCN.card) == -1 && BDFDB.disCN.cardprimaryoutline, BDFDB.disCN.settingstablecard, this.props.cardClassName, props.className),
+							className: BDFDB.DOMUtils.formatClassName([this.props.cardClassName, props.className].filter(n => n).join(" ").indexOf(BDFDB.disCN.card) == -1 && BDFDB.disCN.cardprimary, BDFDB.disCN.settingstablecard, this.props.cardClassName, props.className),
 							cardId: props.key,
 							backdrop: false,
 							horizontal: true,

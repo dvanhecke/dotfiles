@@ -51,5 +51,6 @@ alias ls="lsd -Al --color always"
 alias vim="nvim"
 alias activate="source venv/bin/activate"
 alias load-env="set -a; source .env; set +a"
+alias cat="bat"
 
 neofetch

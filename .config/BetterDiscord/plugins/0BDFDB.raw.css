@@ -146,6 +146,7 @@ img:not([src]), img[src=""], img[src="null"] {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	text-transform: uppercase;
 	cursor: pointer;
 	order: 1;
 }
@@ -1253,6 +1254,12 @@ input[REPLACE_CLASS_input][REPLACE_CLASS_inputerror] {
 	flex-direction: column;
 }
 
+[REPLACE_CLASS_flexhorizontal] > [REPLACE_CLASS_flexchild] + [REPLACE_CLASS_flexchild],
+[REPLACE_CLASS_flexhorizontal] > [REPLACE_CLASS_flexchild] + [REPLACE_CLASS_button],
+[REPLACE_CLASS_flexhorizontal] > [REPLACE_CLASS_input] + [REPLACE_CLASS_button] {
+	margin-left: 10px;
+}
+
 [REPLACE_CLASS__repomodal] {
 	min-height: unset;
 }
@@ -1285,6 +1292,9 @@ input[REPLACE_CLASS_input][REPLACE_CLASS_inputerror] {
 	flex-direction: column;
 	padding-right: 100px;
 	padding-bottom: 0;
+}
+[REPLACE_CLASS__repolistheader] [REPLACE_CLASS_flex] {
+	gap: 6px;
 }
 [REPLACE_CLASS__repolistscroller] {
 	padding-top: 0;
@@ -1340,6 +1350,13 @@ input[REPLACE_CLASS_input][REPLACE_CLASS_inputerror] {
 [REPLACE_CLASS_noticeclosing] {
 	height: 0 !important;
 	overflow: hidden !important;
+}
+[REPLACE_CLASS_noticesuccess] {
+	background-color: var(--status-positive-background);
+	color: var(--status-positive-text)
+}
+[REPLACE_CLASS_noticesuccess] [REPLACE_CLASS_noticebutton]:hover {
+	color: var(--text-positive)
 }
 [REPLACE_CLASS_noticetext] {
 	display: inline-flex;

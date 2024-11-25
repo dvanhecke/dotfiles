@@ -1,3 +1,9 @@
 .config/nvim/lazy-lock.json
 obsidian
 .config/tmux/plugins
+Pictures/*.png
+.config/user-*
+.config/dconf
+.config/discord
+.config/btop/btop.conf
+.config/BetterDiscord Installer

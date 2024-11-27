@@ -52,3 +52,5 @@ alias load-env="set -a; source .env; set +a"
 alias cat="bat"
 
 neofetch
+
+eval $(thefuck --alias)

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-directory=~/Wallpapers
+directory=~/Pictures/Wallpapers
 monitor=`hyprctl monitors | grep Monitor | awk '{print $2}'`
 
 if [ -d "$directory" ]; then
@@ -8,9 +8,9 @@ if [ -d "$directory" ]; then
 
     echo "setting wallpaper"
 
-    hyprctl hyprpaper unload all
-    hyprctl hyprpaper preload $random_background
-    hyprctl hyprpaper wallpaper "$monitor, $random_background"
-    wal -i $random_background
-
+    wal -n -i $random_background
+    swww img $random_background --transition-type=any --transition-duration=2
+    sleep 2
+    pywal-discord
+    pywal-spicetify catppuccin
 fi

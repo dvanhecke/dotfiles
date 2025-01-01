@@ -13,4 +13,7 @@ if [ -d "$directory" ]; then
     sleep 2
     pywal-discord
     pywal-spicetify catppuccin
+    gsettings set org.gnome.desktop.interface gtk-theme "wal"
+    gsettings set org.gnome.desktop.interface icon-theme 'MyIconTheme'
+    gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 fi

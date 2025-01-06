@@ -12,7 +12,7 @@ if [ -d "$directory" ]; then
     swww img $random_background --transition-type=any --transition-duration=2
     sleep 2
     pywal-discord
-    pywal-spicetify catppuccin
+    pywal-spicetify marketplace
     gsettings set org.gnome.desktop.interface gtk-theme "wal"
     gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 fi

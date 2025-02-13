@@ -1,0 +1,77 @@
+@import url('file:///home/hellcat/.cache/wal/colors-waybar.css');
+
+@keyframes fadeIn{
+    0% {
+        padding-left:20;
+        margin-left:50;
+        margin-right:50;
+    }
+    100% {
+        padding:0;
+        margin:0;
+    }
+}
+
+* {
+    outline:none;
+    font-family: FiraCode Nerd Font
+}
+
+.floating-notifications .notification{
+    background-color: alpha(@color0, .8);
+    animation: fadeIn .5s ease-in-out;
+}
+
+.control-center-list {
+  background: transparent;
+}
+
+.control-center-list-placeholder {
+  opacity: 0.5;
+}
+
+.control-center {
+    background-color: alpha(@color0, .8);
+    border: 2px solid @color1;
+}
+
+.notification {
+    background-color: alpha(@color0, .8);
+}
+
+.summary {
+    color: @color2;
+}
+
+.time {
+    font-weight: 700;
+    background: transparent;
+    color: @color7;
+    text-shadow: none;
+    padding: 0;
+    margin-right: 18px;
+}
+
+.body {
+    background: transparent;
+    text-shadow: none;
+    color: @color6
+}
+
+.widget-title {
+    color: @color2;
+}
+
+.control-center-list {
+    background: transparent;
+}
+
+.widget-title > button {
+    color: @color6;
+    background-color: alpha(@color0, .8);
+    border: none;
+}
+
+.widget-title > button:hover {
+    color: @color2;
+}

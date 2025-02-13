@@ -16,12 +16,15 @@ if [ -d "$directory" ]; then
     fi
 
     echo "$random_background" > "$cache_file"
-    wal -n -i $random_background
+    wal --cols16 -ni $random_background
+    mv $HOME/.config/waybar/style.css $HOME/.config/waybar/style.css.old
+    mv $HOME/.config/waybar/style.css.old $HOME/.config/waybar/style.css
     swww img $random_background --transition-type=any --transition-duration=2
     sleep 2
     pywal-discord
     pywalfox update
     pywal-spicetify marketplace
+    swaync-client -rs
     gsettings set org.gnome.desktop.interface gtk-theme "wal"
     gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
     notify-send "System" "Wallpaper setted, and themed " -i $random_background

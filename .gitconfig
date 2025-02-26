@@ -1,11 +1,11 @@
 [user]
-    signingkey = 0D026A39EF602408
-	email = duartevanhecke@gmail.com
-	name = dvanhecke
+    email = duartevanhecke@gmail.com
+    name = dvanhecke
 [push]
     autoSetupRemote = true
-[commit]
-    gpgsign = true
+
+[pull]
+    rebase = true
 
 [includeIf "gitdir:~/school/"]
     path = .gitconfig.school

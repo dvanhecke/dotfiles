@@ -27,5 +27,5 @@ if [ -d "$directory" ]; then
     swaync-client -rs
     gsettings set org.gnome.desktop.interface gtk-theme "wal"
     gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-    notify-send "System" "Wallpaper setted, and themed " -i $random_background
+    notify-send "System" "Wallpaper set, and themed " -i $random_background
 fi

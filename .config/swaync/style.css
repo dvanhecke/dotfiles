@@ -75,3 +75,22 @@
 .widget-title > button:hover {
     color: @color2;
 }
+
+.widget-mpris {
+    color: @color6;
+}
+
+.widget-mpris-title {
+    color: @color2;
+}
+
+.widget-mpris-player button {
+    color: @color6;
+    background-color: alpha(@color0, .8);
+}
+
+.widget-mpris-player button:hover {
+    background-color: alpha(@color0, .8);
+    color: @color2;
+}
+

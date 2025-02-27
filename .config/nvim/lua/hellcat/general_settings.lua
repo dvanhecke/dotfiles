@@ -34,6 +34,10 @@ vim.api.nvim_create_autocmd("Signal", {
     pattern = "SIGUSR1",
     callback = function()
         vim.cmd("colorscheme pywal16")  -- Reload the colorscheme
+        -- Reload lualine
+        require("lualine").setup({
+            options = { theme = "pywal16-nvim" }
+        })
     end,
 })
 

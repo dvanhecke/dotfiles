@@ -23,8 +23,8 @@ if [ -d "$directory" ]; then
     sleep 2
     pywal-discord
     pywalfox update
-    pywal-spicetify marketplace
     swaync-client -rs
+    killall -USR1 nvim
     gsettings set org.gnome.desktop.interface gtk-theme "wal"
     gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
     notify-send "System" "Wallpaper set, and themed " -i $random_background

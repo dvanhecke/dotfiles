@@ -29,3 +29,12 @@ vim.opt.wildmenu = true
 vim.o.list = true
 vim.o.listchars = 'space:·,tab:-->,trail:·,extends:>,precedes:<'
 
+-- auto reload color scheme
+vim.api.nvim_create_autocmd("Signal", {
+    pattern = "SIGUSR1",
+    callback = function()
+        vim.cmd("colorscheme pywal16")  -- Reload the colorscheme
+    end,
+})
+
+

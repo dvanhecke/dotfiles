@@ -5,13 +5,13 @@
     "reload_style_on_change": true, 
     "modules-left": [
         "custom/notifications",
-        "hyprland/workspaces",
     ],
     "modules-center": [
-        "clock",
+        "hyprland/workspaces",
     ],
     "modules-right": [
         "idle_inhibitor",
+        "clock",
         "pulseaudio",
         "power-profiles-daemon",
         "cpu",

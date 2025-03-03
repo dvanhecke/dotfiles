@@ -20,7 +20,6 @@
         "backlight",
         "battery",
         "tray",
-        "custom/power"
     ],
     "clock": {
         "format": "{:%H:%M}  ",
@@ -143,12 +142,6 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    },
-    "custom/power": {
-        "format" : "⏻",
-        "tooltip": false,
-        "on-click": "wlogout",
-        "escape": true
     },
     "custom/notifications": {
         "tooltip": false,

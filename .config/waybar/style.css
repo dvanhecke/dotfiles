@@ -7,33 +7,13 @@
 }
 
 window#waybar {
-    background-color: alpha(@color0, .8);
-    border-bottom: 2px solid @color1;
+    background: transparent;
     color: @color6;
-    transition-property: background-color;
-    transition-duration: .5s;
+    border-bottom: 4px dotted @color0;
 }
 
 window#waybar.hidden {
     opacity: 0.2;
-}
-
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
 }
 
 button {
@@ -55,14 +35,21 @@ button:hover {
     background-color: #a37800;
 }
 
+#workspaces {
+    background-color: @color1;
+    border-radius: 10%/40%;
+}
+
 #workspaces button {
     padding: 0 5px;
-    background-color: transparent;
-    color: #ffffff;
+    color: @color6;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+    color: @color2;
+    box-shadow: None;
+    background: transparent;
+    text-shadow: None;
 }
 
 #workspaces button.focused {
@@ -72,6 +59,10 @@ button:hover {
 
 #workspaces button.urgent {
     background-color: #eb4d4b;
+}
+
+#workspaces button.active {
+    color: @color2;
 }
 
 #mode {

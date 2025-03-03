@@ -95,3 +95,12 @@
     color: @color2;
 }
 
+.widget-volume {
+    background-color: alpha(@color1, .4);
+    color: @color6;
+    border-radius: 5%/40%;
+}
+
+.widget-buttons-grid {
+    background-color: alpha(@color1, .4);
+}

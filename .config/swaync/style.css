@@ -90,6 +90,7 @@
 }
 
 .widget-mpris-player button:hover {
+    box-shadow: None;
     background-color: alpha(@color0, .8);
     color: @color2;
 }

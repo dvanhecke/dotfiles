@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-    background: transparent;
+    background-color: alpha(@color0, .8);
     color: @color6;
     border-bottom: 4px dotted @color0;
 }
@@ -36,7 +36,7 @@ button:hover {
 }
 
 #workspaces {
-    background-color: @color1;
+    background-color: @color0;
     border-radius: 10%/40%;
 }
 
